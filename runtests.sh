@@ -1,5 +1,6 @@
 #! /bin/bash
 ROOT=`pwd`
+find . -name '*.out' -delete
 go build
 cd $ROOT/serv
 gcc server_tcp.c helpers.c callbacks.c -luv -o tcp.out
@@ -12,6 +13,4 @@ cd $ROOT
 go test -bench=.
 kill $TCPID
 kill $UDPID
-rm -rf *.out
-cd $ROOT/serv
-rm -rf *.out
+find . -name '*.out' -delete
